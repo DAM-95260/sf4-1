@@ -13,9 +13,7 @@ class ProductController extends AbstractController
      */
     public function  liste()
     {
-        return $this->json([
-            'titre' => 'Liste des produits'
-        ]);
+        return $this->render('product/list.html.php');
     }
 
     /**
@@ -24,9 +22,7 @@ class ProductController extends AbstractController
      */
     public function add()
     {
-        return $this->json([
-            'titre' => 'Ajouter un produit'
-        ]);
+        return $this->render('product/add.html.twig');
     }
 
     /**
@@ -35,11 +31,12 @@ class ProductController extends AbstractController
      */
     public  function  edit($id)
     {
-        return $this->json([
-            'titre' => 'Modifier le produit ' . $id
-        ]);
+        return $this->render('product/edit.html.php');
     }
 
+
 }
+
+
 
 

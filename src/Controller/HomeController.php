@@ -15,14 +15,14 @@ class HomeController extends AbstractController
     public function index()
     {
         # template/     home.html.twig
-       return $this->render('home.html.twig', [
-           'pseudo' => 'John Doe',
-           'liste' => [
-               'foo',
-               'bar',
-               'baz',
-           ]
-       ]);
+        return $this->render('home.html.twig', [
+            'pseudo' => 'John Doe',
+            'liste' => [
+                'foo',
+                'bar',
+                'baz',
+            ]
+        ]);
     }
 
     /**
@@ -37,7 +37,6 @@ class HomeController extends AbstractController
             'id' => $id,
             'section' => $request->query->get('section', 'profil'),
             'session' => $session->get('user'),
-            ]);
+        ]);
     }
-
 }
