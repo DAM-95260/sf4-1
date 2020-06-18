@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Product;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class HomeController extends AbstractController
@@ -25,18 +25,32 @@ class HomeController extends AbstractController
         ]);
     }
 
+
     /**
-     *  On place les paramètre dynamique entre accolades
-     * URI valide: /test/42
-     *
-     * @Route("/test/{id}", name="test")
+     * @Route("/test", name="test")
      */
-    public function test($id, Request $request, SessionInterface $session)
+    public function test(EntityManagerInterface $em)
     {
-        return $this->json([
-            'id' => $id,
-            'section' => $request->query->get('section', 'profil'),
-            'session' => $session->get('user'),
-        ]);
+        // création d'une entité
+        $product = new  Poduct();
+
+        $product
+            ->setName('Jeans')
+            ->setDescription('Un super jean !')
+            ->setPrice(79.99)
+            ->setQuantity(50)
+        ;
+
+        // L'entité n'est pas encore enregistée en base
+        dump($product);
+
+        // Enregistrement (insertion)
+        // 1.Préparer à l'enregistrement d'une entité
+        $em->persist($product);
+        // 2.Exécuter les les requêtes SQL
+        $em->flush();
+
+        // fonction de debug: dump() & die
+        dd($product);
     }
 }
