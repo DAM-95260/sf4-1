@@ -13,7 +13,7 @@ class ProductController extends AbstractController
      */
     public function  liste()
     {
-        return $this->render('product/list.html.php');
+        return $this->render('product/list.html.twig');
     }
 
     /**
@@ -31,7 +31,7 @@ class ProductController extends AbstractController
      */
     public  function  edit($id)
     {
-        return $this->render('product/edit.html.php');
+        return $this->render('product/edit.html.twig');
     }
 
 
