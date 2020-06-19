@@ -32,7 +32,7 @@ class HomeController extends AbstractController
     public function test(EntityManagerInterface $em)
     {
         // création d'une entité
-        $product = new  Poduct();
+        $product = new  Product();
 
         $product
             ->setName('Jeans')

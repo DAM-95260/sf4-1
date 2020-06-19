@@ -25,25 +25,24 @@
                 <th>Quantité</th>
             </tr>
         </thead>
-    </table>
-    <body>
-    {% for product in product_list %}
-        <tr>
-            <td>{{ product.id }}</td>
-            <td>{{ product.name }}</td>
-            <td>{{ product.description }}</td>
-            <td>{{ product.price|number_format(2, '.', ' ') }}</td>
-            <td>{{ product.quantity }}</td>
-            <td>
-                <a href="{{ ('product_edit', {id: product.id}) }}" class="btn btn-primary">
-                    Modifier
-                </a>
-                <a href="#" class="btn btn-danger">Suprimer</a>
-            </td>
-        </tr>
-    {% endfor %}
+        <tbody>
 
-    {% endfor %}
-    </body>
+        {% for product in product_list %}
+            <tr>
+                <td>{{ product.id }}</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price|number_format(2, '.', ' ') }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>
+                    <a href="{{ path('product_edit', {id: product.id}) }}" class="btn btn-primary">
+                        Modifier
+                    </a>
+                    <a href="#" class="btn btn-danger">Suprimer</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
